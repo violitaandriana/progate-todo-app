@@ -20,24 +20,35 @@ function App() {
     },
   ]);
 
-  console.log(todos);
+  const toggleCompleted = (todoId) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === todoId && todo.completed === false) {
+        todo.completed = true;
+      }
+      else {
+        todo.completed = false;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
 
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>My Todo List</h1>
-      <Todos todos={todos} />
+      <Todos todos={todos} toggleCompleted={toggleCompleted} />
     </div>
   );
 }
 
 const styles = {
   container: {
-    textAlign: 'center',
-    padding: '12px',
+    textAlign: "center",
+    padding: "12px",
   },
   title: {
-    fontSize: '36px',
-  }
-}
+    fontSize: "36px",
+  },
+};
 
 export default App;
