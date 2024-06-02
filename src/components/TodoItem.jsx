@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 function TodoItem({ todo, toggleCompleted, deleteTodo }) {
   const getTodoTitleStyle = () => {
-    if (todo.completed === true) {
-      return { textDecoration: "line-through" };
-    } else {
-      return { textDecoration: "none" };
-    }
+    return {
+      textDecoration: todo.completed ? "line-through" : "none",
+    };
   };
 
   return (
@@ -16,7 +14,9 @@ function TodoItem({ todo, toggleCompleted, deleteTodo }) {
         onChange={() => toggleCompleted(todo.id)}
       />
       <p style={getTodoTitleStyle()}>{todo.title}</p>
-      <button style={styles.button} onClick={() => deleteTodo(todo.id)} >x</button>
+      <button style={styles.button} onClick={() => deleteTodo(todo.id)}>
+        x
+      </button>
     </div>
   );
 }
