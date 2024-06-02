@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Todos from "./components/Todos";
+import Todos from "./components/Todos.jsx";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -24,8 +24,7 @@ function App() {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === todoId && todo.completed === false) {
         todo.completed = true;
-      }
-      else {
+      } else {
         todo.completed = false;
       }
       return todo;
@@ -33,10 +32,20 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const deleteTodo = (todoId) => {
+    console.log('hay')
+    const updatedTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(updatedTodos);
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>My Todo List</h1>
-      <Todos todos={todos} toggleCompleted={toggleCompleted} />
+      <Todos
+        todos={todos}
+        toggleCompleted={toggleCompleted}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 }
