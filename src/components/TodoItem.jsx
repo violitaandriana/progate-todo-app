@@ -1,27 +1,7 @@
-import { useContext } from "react";
-import { TodoContext } from "../App.jsx";
-
-/* eslint-disable react/prop-types */
 function TodoItem({ todo }) {
-  const { toggleCompleted, deleteTodo } = useContext(TodoContext);
-
-  const getTodoTitleStyle = () => {
-    return {
-      textDecoration: todo.completed ? "line-through" : "none",
-    };
-  };
-
   return (
     <div style={styles.todoItem}>
-      <input
-        type="checkbox"
-        style={styles.checkbox}
-        onChange={() => toggleCompleted(todo.id)}
-      />
-      <p style={getTodoTitleStyle()}>{todo.title}</p>
-      <button style={styles.button} onClick={() => deleteTodo(todo.id)}>
-        x
-      </button>
+      <p>{todo.title}</p>
     </div>
   );
 }
@@ -33,21 +13,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  },
-  checkbox: {
-    marginRight: "10px",
-    height: "18px",
-    width: "18px",
-  },
-  button: {
-    backgroundColor: "#BB0000",
-    color: "#fff",
-    height: "30px",
-    width: "30px",
-    borderRadius: "100%",
-    border: "none",
-    cursor: "pointer",
-    fontSize: "16px",
   },
 };
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import TodoItem from "./TodoItem.jsx";
 
 function Todos({ todos }) {
